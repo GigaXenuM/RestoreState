@@ -44,10 +44,12 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 
 void MainWindow::restoreSettings() {
   QSettings settings("MyCompany", "RestoreState");
+
+  qDebug() << settings.fileName();
   restoreGeometry(settings.value("geometry").toByteArray());
 
   setWindowState(Qt::WindowMaximized);
   restoreState(settings.value("windowState").toByteArray());
 
-  tabifyDockWidget(_paragraphsDockWidget, _customersDockWidget);
+  tabifyDockWidget(_customersDockWidget, _paragraphsDockWidget);
 }
