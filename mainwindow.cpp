@@ -46,10 +46,8 @@ void MainWindow::restoreSettings() {
   QSettings settings("MyCompany", "RestoreState");
   restoreGeometry(settings.value("geometry").toByteArray());
 
-  auto wState{windowState()};
-  setWindowState(Qt::WindowNoState);
+  setWindowState(Qt::WindowMaximized);
   restoreState(settings.value("windowState").toByteArray());
-  setWindowState(wState);
 
   tabifyDockWidget(_paragraphsDockWidget, _customersDockWidget);
 }
